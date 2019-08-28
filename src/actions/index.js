@@ -1,3 +1,4 @@
+// 後でReducerで活用する
 export const INCREMENT = 'INCREMENT'
 export const DECREMENT = 'DECREMENT'
 
