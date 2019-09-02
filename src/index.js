@@ -11,10 +11,14 @@ import { Provider } from 'react-redux'
 // actionの代わりに関数を返すことができる
 import thunk from 'redux-thunk'
 
+// リンク用パッケージ
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
 import './index.css';
 import reducer from './reducers'
 
 import EventsIndex from './components/events_index';
+import EventsNew from './components/events_new';
 import * as serviceWorker from './serviceWorker';
 
 const store = createStore(reducer, applyMiddleware(thunk))
@@ -22,7 +26,12 @@ const store = createStore(reducer, applyMiddleware(thunk))
 // Reactのstoreのバケツリレーをなくすためのコード
 ReactDOM.render(
   <Provider store={store}>
-    <EventsIndex />
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/events/new" component={EventsNew} />
+        <Route exact path="/" component={EventsIndex} />
+      </Switch>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );
